@@ -1,5 +1,6 @@
 package com.compras.services;
 
+
 import com.compras.dto.ClienteDTO;
 import com.compras.dto.ComprasDTO;
 import com.compras.entities.Cliente;
@@ -19,6 +20,7 @@ public class ComprasService {
 
     @Autowired
     private ComprasRepository repository;
+
 
     public List<Compras> findAll() {
         return repository.findAll();
@@ -54,10 +56,11 @@ public class ComprasService {
     private void updateData(Compras newObj, Compras obj) {
         newObj.setItem(obj.getItem()); //o newObj que a gente procurou no banco ele foi atualizado com os novos dados obj
         newObj.setPreco(obj.getPreco());
+        newObj.setQuantidade(obj.getQuantidade());
 
     }
 
     public Compras fromDTO(ComprasDTO objDto) {
-        return new Compras(objDto.getId(), objDto.getItem(), objDto.getPreco(), objDto.getCliente());
+        return new Compras(objDto.getId(), objDto.getItem(), objDto.getPreco(), objDto.getQuantidade(), objDto.getCliente());
     }
 }

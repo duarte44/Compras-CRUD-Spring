@@ -33,9 +33,9 @@ public class ComprasApplication implements CommandLineRunner {
 		Cliente cli2 = new Cliente(null, "Marly", "2222222");
 
 
-		Compras c1 = new Compras(null, "PC", "200.00", cli1);
-		Compras c2 = new Compras(null, "Notebook", "100.00", cli1);
-		Compras c3 = new Compras(null, "Notebook", "100.00", cli2);
+		Compras c1 = new Compras(null, "PC", 200.00, 3,  cli1);
+		Compras c2 = new Compras(null, "Notebook", 100.00, 2,cli1);
+		Compras c3 = new Compras(null, "Notebook", 100.00, 5, cli2);
 
 		cli1.getCompras().addAll(Arrays.asList(c1, c2));
 		cli2.getCompras().addAll(Arrays.asList(c3));

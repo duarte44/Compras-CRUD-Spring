@@ -30,4 +30,12 @@ public class Cliente {
         this.nome = nome;
         this.telefone = telefone;
     }
+
+    public Double getTotal(){
+        double soma = 0.0;
+            for (Compras ip: compras){ //percore minha lista acumulando valores e rotornando o total
+            soma = soma + ip.getTotal();
+            }
+        return soma;
+    }
 }

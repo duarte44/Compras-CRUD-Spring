@@ -1,8 +1,12 @@
 package com.compras.resources;
 
 import com.compras.dto.ClienteDTO;
+import com.compras.dto.ClienteNewDTO;
+import com.compras.dto.ComprasDTO;
 import com.compras.entities.Cliente;
+import com.compras.entities.Compras;
 import com.compras.services.ClienteService;
+import com.compras.services.ComprasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +22,8 @@ public class ClienteResource {
 
     @Autowired
     private ClienteService service;
+
+
 
     @RequestMapping(method=RequestMethod.GET)
     public ResponseEntity<List<ClienteDTO>> findAll() {
@@ -45,13 +51,14 @@ public class ClienteResource {
     }
 
     @RequestMapping(method=RequestMethod.POST)
-    public ResponseEntity<Void> insert(@RequestBody ClienteDTO objDto){
+    public ResponseEntity<Void> insert(@RequestBody ClienteNewDTO objDto){
         Cliente obj = service.fromDTO(objDto);
         obj = service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri(); //pega o id do objeto e passa pra url
         return ResponseEntity.created(uri).build();
         /* cria um novo usuario no banco de dados */
     }
+
 
     @RequestMapping( value = "/{id}", method=RequestMethod.PUT)
     public ResponseEntity<Void> update(@RequestBody ClienteDTO objDto, @PathVariable Long id){
